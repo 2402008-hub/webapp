@@ -1,0 +1,616 @@
+/* ============================================
+   1ra Iglesia Apostólica - Playa del Carmen
+   Stylesheet
+============================================ */
+
+:root {
+  --navy: #0d1f3c;
+  --blue: #1a3a6e;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --cream: #f9f5ef;
+  --white: #ffffff;
+  --gray: #6b7280;
+  --light-gray: #f3f4f6;
+  --text-dark: #1a1a2e;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Lato', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+/* ---- NAVBAR ---- */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(13, 31, 60, 0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.nav-logo {
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-size: 0.875rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+  letter-spacing: 0.03em;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+  background: rgba(201,168,76,0.08);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.nav-mobile {
+  display: none;
+  list-style: none;
+  flex-direction: column;
+  background: var(--navy);
+  padding: 1rem 1.5rem;
+  border-top: 1px solid rgba(201,168,76,0.2);
+}
+
+.nav-mobile.open { display: flex; }
+
+.nav-mobile a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  padding: 0.6rem 0;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: block;
+  transition: color 0.2s;
+}
+
+.nav-mobile a:hover { color: var(--gold); }
+
+/* ---- HERO ---- */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 580px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(26,58,110,0.9) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(201,168,76,0.15) 0%, transparent 50%),
+    linear-gradient(160deg, #0a1628 0%, #12254d 40%, #1a3a6e 70%, #0d1f3c 100%);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 60px,
+      rgba(255,255,255,0.015) 60px,
+      rgba(255,255,255,0.015) 61px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 60px,
+      rgba(255,255,255,0.015) 60px,
+      rgba(255,255,255,0.015) 61px
+    );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+  animation: fadeUp 1s ease both;
+}
+
+.hero-cross {
+  font-size: 3.5rem;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+  animation: fadeUp 1s ease 0.1s both;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  color: var(--white);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+  animation: fadeUp 1s ease 0.2s both;
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: var(--gold-light);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+  animation: fadeUp 1s ease 0.3s both;
+}
+
+.hero-verse {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: rgba(255,255,255,0.7);
+  font-size: 1.05rem;
+  margin-bottom: 2.5rem;
+  animation: fadeUp 1s ease 0.4s both;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 0.85rem 2.5rem;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: background 0.3s, color 0.3s;
+  animation: fadeUp 1s ease 0.5s both;
+}
+
+.hero-btn:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+.scroll-down {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.4);
+  font-size: 1.5rem;
+  animation: bounce 2s infinite;
+  z-index: 2;
+}
+
+/* ---- GENERAL SECTION ---- */
+.section { padding: 5rem 1.5rem; }
+.container { max-width: 1100px; margin: 0 auto; }
+
+.section-label {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: var(--navy);
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+}
+
+/* ---- NOSOTROS ---- */
+.nosotros { background: var(--cream); }
+
+.nosotros-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.nosotros-text p {
+  color: var(--gray);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.nosotros-text strong { color: var(--navy); }
+
+.nosotros-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.mini-card {
+  background: var(--white);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 8px;
+  padding: 1.25rem;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.mini-card:hover {
+  box-shadow: 0 8px 30px rgba(13,31,60,0.1);
+  transform: translateY(-3px);
+}
+
+.mini-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.mini-card h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--navy);
+  margin-bottom: 0.3rem;
+}
+
+.mini-card p {
+  font-size: 0.825rem;
+  color: var(--gray);
+  line-height: 1.5;
+}
+
+/* ---- HORARIOS ---- */
+.horarios { background: var(--white); }
+
+.horarios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.horario-card {
+  border: 1px solid rgba(13,31,60,0.1);
+  border-radius: 8px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  position: relative;
+  transition: box-shadow 0.3s;
+}
+
+.horario-card:hover { box-shadow: 0 6px 24px rgba(13,31,60,0.08); }
+
+.horario-card.featured {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, #fffdf4, #fef9e7);
+}
+
+.horario-badge {
+  position: absolute;
+  top: -12px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 12px;
+  border-radius: 20px;
+}
+
+.horario-day {
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.horario-type {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+
+.horario-time {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.horarios-note {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--gray);
+  font-style: italic;
+}
+
+/* ---- VERSÍCULO ---- */
+.versiculo-section {
+  position: relative;
+  padding: 6rem 1.5rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.versiculo-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0d1f3c 0%, #1a3a6e 100%);
+}
+
+.versiculo-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.quote-mark {
+  font-family: var(--font-display);
+  font-size: 8rem;
+  color: var(--gold);
+  opacity: 0.25;
+  line-height: 0.5;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.versiculo-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  font-style: italic;
+  color: var(--white);
+  max-width: 800px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+}
+
+.versiculo-ref {
+  font-size: 1rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-style: normal;
+}
+
+/* ---- VALORES ---- */
+.valores { background: var(--cream); }
+
+.valores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 2rem;
+}
+
+.valor-item {
+  border-left: 3px solid var(--gold);
+  padding-left: 1.5rem;
+}
+
+.valor-num {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.valor-item h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+
+.valor-item p {
+  font-size: 0.9rem;
+  color: var(--gray);
+  line-height: 1.7;
+}
+
+/* ---- UBICACIÓN ---- */
+.ubicacion { background: var(--white); }
+
+.ubicacion-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.info-item {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+}
+
+.info-icon {
+  font-size: 1.3rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.info-item strong {
+  display: block;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+
+.info-item p {
+  color: var(--gray);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.map-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.75rem;
+  background: var(--navy);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  transition: background 0.3s;
+}
+
+.map-btn:hover { background: var(--blue); }
+
+.mapa-embed {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(13,31,60,0.1);
+}
+
+/* ---- CTA ---- */
+.cta-section {
+  background: linear-gradient(135deg, #0d1f3c 0%, #1a3a6e 100%);
+  padding: 5rem 1.5rem;
+  text-align: center;
+}
+
+.cta-inner { position: relative; }
+
+.cta-cross {
+  font-size: 2.5rem;
+  color: var(--gold);
+  opacity: 0.5;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.cta-section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.cta-section p {
+  color: rgba(255,255,255,0.7);
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 0.9rem 2.5rem;
+  background: var(--gold);
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  border-radius: 4px;
+  text-transform: uppercase;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.cta-btn:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+}
+
+/* ---- FOOTER ---- */
+.footer {
+  background: #070f1e;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  color: var(--gold);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-address {
+  color: rgba(255,255,255,0.4);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-copy {
+  color: rgba(255,255,255,0.2);
+  font-size: 0.75rem;
+}
+
+/* ---- ANIMATIONS ---- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
+
+  .nosotros-grid { grid-template-columns: 1fr; }
+  .ubicacion-wrap { grid-template-columns: 1fr; }
+  .nosotros-cards { grid-template-columns: 1fr 1fr; }
+  .valores-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .nosotros-cards { grid-template-columns: 1fr; }
+  .horarios-grid { grid-template-columns: 1fr; }
+}
